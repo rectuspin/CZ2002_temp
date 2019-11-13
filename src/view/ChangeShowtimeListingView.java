@@ -40,8 +40,11 @@ public class ChangeShowtimeListingView {
             printCinema(dbController.getCineplexes().get(cineplexes.get(choiceOfCineplex)));
             System.out.print("\nEnter your choice of cinema: ");
             choiceOfCinema = scanner.nextInt() - 1;
+            scanner.nextLine();
+
             System.out.print("\nEnter the date: (YYYY-MM-DD)");
             date = scanner.nextLine();
+
             System.out.print("\nEnter the time: (HH:mm:ss)");
             time = scanner.nextLine();
             Cineplex cineplexOfChoice = dbController.getCineplexes().get(cineplexes.get(choiceOfCineplex));
@@ -173,7 +176,26 @@ public class ChangeShowtimeListingView {
     }
 
     public static void delete() {
-        System.out.println("Which cineplex do you want to delete show time from?");
+        ArrayList<Cineplex> cineplexes = new ArrayList<>(dbController.getCineplexes().values());
+        System.out.println("Which cineplex do you want to delete showtime from?");
+        printCineplex();
+        int userChoiceInt = scanner.nextInt();
+        Cineplex cineplex1 = cineplexes.get(userChoiceInt-1);
+
+        HashMap<LocalDate, ArrayList<ShowTime>> showTimes=cineplex1.getShowTimes();
+        System.out.println("On which date is the showtime that do you want to delete?");
+        for (LocalDate name: showTimes.keySet()){
+            String key = name.toString();
+            String value = showTimes.get(name).toString();
+            System.out.println(key + " " + value);
+        }
+        String chosenDate = scanner.nextLine();
+        LocalDate localDate= LocalDate.parse(chosenDate);
+        ArrayList<ShowTime> showTimeListOnChosenDate=showTimes.get(localDate);
+        System.out.println("On which date is the showtime that do you want to delete?");
+        userChoiceInt = scanner.nextInt();
+        ShowTime selectedShowTime=showTimeListOnChosenDate.get(userChoiceInt-1);
+        adminCineplexService.removeShowTime(selectedShowTime);
         printCineplex();
     }
 

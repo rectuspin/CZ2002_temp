@@ -70,6 +70,7 @@ public class MovieGoerView {
                     break;
                 case 7:
                     // View Top 5 movies ranked by ticket sales;
+                    Top5MoviesView.printTop5Movies();
                     break;
                 case 8:
                     // View Top 5 movies ranked by overall reviewers’ ratings;

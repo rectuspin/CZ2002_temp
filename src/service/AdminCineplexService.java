@@ -15,6 +15,14 @@ public class AdminCineplexService {
 
     private DBController dbController = DBController.getInstance();
 
+    //display the list of cineplexes
+    public void displayCineplexes(){
+        System.out.println(dbController.getCineplexes());
+    }
+    //display the list of cinemas
+    public void displayCinemas(Cineplex selectedCineplex){
+        System.out.println(selectedCineplex.getCinemas());
+    }
 
     public void addCineplex(Cineplex cineplex) {
 //        dbController.getCineplexes().put(cineplex.getName(), cineplex);

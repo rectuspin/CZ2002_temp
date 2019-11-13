@@ -20,6 +20,10 @@ public class Seat implements Model {
         this.col = col;
     }
 
+    //remove after testing
+    public Seat(Seat[] seats, char c, int col) {
+    }
+
     public String toString() {
         /**This method will return a string that is formatted to show if the seat is occupied or not occupied
          * @return A string formatted that shows if a seat is occupied or unoccupied

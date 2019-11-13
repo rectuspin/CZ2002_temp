@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import static view.TicketPriceView.ticketPriceView;
+import static view.UpdateCineplexOrCinemaView.updateCineplexOrCinemaView;
 
 public class AdminView {
     public static void adminView() {
@@ -17,9 +18,10 @@ public class AdminView {
                                 "| (1) Configure setting              |\n" +
                                 "| (2) Movie listings                 |\n" +
                                 "| (3) Change cinema showtime         |\n"+
-                                "| (4) Go back                        |\n" +
+                                "| (4) Create/Remove cineplex/cinema  |\n" +
+                                "| (5) Go back                        |\n" +
                                 "======================================");
-            System.out.print("Option: ");
+                    System.out.print("Option: ");
 
             choice_main = sc.nextInt();
 
@@ -84,14 +86,17 @@ public class AdminView {
                                 ChangeShowtimeListingView.update();
                                 break;
                             case 3:
-                              //  ChangeShowtimeListing.Remove();
+                                ChangeShowtimeListingView.delete();
                                 break;
                             default:
                                 break;
                         }
                     } while (choice < 4);
                     break;
+                case 4:
+                    updateCineplexOrCinemaView();
+                    break;
             }
-        } while (choice_main < 4);
+        } while (choice_main < 5);
     }
 }
